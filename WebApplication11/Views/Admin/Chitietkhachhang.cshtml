@@ -1,0 +1,88 @@
+﻿@model WebApplication11.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Chitietkhachhang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-md-10 panel-info">
+    <div class="content-box-header panel-heading">
+        <div class="panel-title ">Chi tiết khách hàng</div>
+
+        <div class="panel-options">
+            <a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+        </div>
+    </div>
+    <div class="content-box-large box-with-header">
+        <dl class="dl-horizontal">
+            <dt>
+                Mã khách hàng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaKH)
+            </dd>
+            <hr>
+            <dt>
+                Tên khách hàng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HotenKH)
+            </dd>
+            <hr>
+            <dt>
+                Địa chỉ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiachiKH)
+            </dd>
+            <hr>
+            <dt>
+                Điện thoại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DienthoaiKH)
+            </dd>
+            <hr>
+            <dt>
+                Tên đăng nhập
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenDN)
+            </dd>
+            <hr>
+            <dt>
+                Mật khẩu
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Matkhau)
+            </dd>
+            <hr>
+            <dt>
+                Email
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <hr>
+            <dt>
+                Đã duyệt
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Daduyet)
+            </dd>
+
+        </dl>
+        @Html.ActionLink("Chỉnh sửa", "Suakhachhang", new { id = Model.MaKH }) |
+        @Html.ActionLink("Quay lại", "QLKhachhang")
+    </div>
+
+</div>

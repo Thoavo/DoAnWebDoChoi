@@ -1,0 +1,94 @@
+﻿@using WebApplication11.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList < WebApplication11.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "QLKhachhang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-md-10 panel-info">
+    <div class="content-box-header panel-heading">
+        <div class="panel-title ">Quản lý khách hàng</div>
+        <div class="panel-options">
+            <a href="@Url.Action("Themmoikhachhang", "Admin")" data-rel="reload"><i class="glyphicon glyphicon-cog"></i>Thêm mới</a>
+        </div>
+    </div>
+    <div class="content-box-large box-with-header">
+        <table class="table-bordered table-condensed">
+            <tr>
+                <th style="width:200px">
+                    Mã khách hàng
+                </th>
+                <th style="width:200px">
+                    Tên khách hàng
+                </th>
+                <th style="width:200px">
+                    Địa chỉ
+                </th>
+                <th style="width:200px">
+                    Điện thoại
+                </th>
+                <th style="width:200px">
+                    Tên đăng nhập
+                </th>
+                <th style="width:200px">
+                    Mật khẩu
+                </th>
+                <th style="width:200px">
+                    Email
+                </th>
+                <th style="width:200px">
+                    Đã duyệt
+                </th>
+                <th style="width:200px">
+                    Tên đồ chơi
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HotenKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiachiKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DienthoaiKH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Matkhau)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Daduyet)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Suakhachhang", new { id = item.MaKH }) |
+                        @Html.ActionLink("Chi tiết", "Chitietkhachhang", new { id = item.MaKH }) |
+                        @Html.ActionLink("Xóa", "Xoakhachhang", new { id = item.MaKH })
+                    </td>
+                </tr>
+            }
+        </table>
+        @*Trang @(Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount;*@
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("QLKhachhang", new { page = page }))
+        </div>
+        <style>
+            .MenuTrang li {
+                display: inline;
+            }
+        </style>
+    </div>
+</div>

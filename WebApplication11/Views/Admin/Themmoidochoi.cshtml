@@ -1,0 +1,117 @@
+﻿@model WebApplication11.Models.DOCHOI
+
+@{
+    ViewBag.Title = "Themmoidochoi";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/vendors/ckeditor/ckeditor.js"></script>
+<script src="~/vendors/ckeditor/adapters/jquery.js"></script>
+
+
+    <div class="col-md-10 panel-info">
+        <div class="content-box-large box-with-header">
+            @using (Html.BeginForm("Themmoidochoi","Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Thêm mới sản phẩm</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TenDC, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenDC, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenDC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Donvitinh, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Donvitinh, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Donvitinh, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dongia, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Dongia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Dongia, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            @Html.LabelFor(model => model.Mota, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @*<textarea id="ckeditor_full" name="Mota">Mô tả thông tin sách</textarea>*@
+                                    <textarea name="Mota"></textarea>
+                                    @*@Html.TextAreaFor(model => model.Mota, new { @id = "FullDescription", @class = "form-control", @rows = "200" }) 
+                                    @Html.ValidationMessageFor(model => model.Mota, "Mô tả thông tin sách", new { @class = "text-danger" })
+                                    <script>CKEDITOR.replace("FullDescription");</script>*@
+
+
+                                </div>  
+
+                     </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Hinhminhhoa, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="fileUpload" />
+                            @ViewBag.Thongbao
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MaTH, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MaTH")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MaCD, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MaCD")
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Ngaycapnhat, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="date" name="Ngaycapnhat" data-date="today"/>
+                            @Html.ValidationMessageFor(model => model.Ngaycapnhat)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Soluongban, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Soluongban, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Soluongban, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.solanxem, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.solanxem, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.solanxem, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 ">
+                            <input type="submit" value="Thêm mới" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Về trang quản lý đồ chơi", "Dochoi")
+            </div>
+        </div>
+    </div>

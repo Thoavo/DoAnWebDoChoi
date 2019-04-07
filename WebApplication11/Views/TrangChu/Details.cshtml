@@ -1,0 +1,231 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+            @input
+    }
+    else
+    {
+            @input.Substring(0, length)<text>...</text>
+    }
+}
+
+
+<div class="col-lg-9" style="padding-bottom:15px">
+    
+    <div class="header" style="color:white;text-align:center;font-size:28px;padding-top:5px">
+        Thông tin chi tiết
+    </div>
+
+    <div class="img-thumbnail">
+        <div class="content">
+            <!--single-->
+            <div class="single-wl3">
+                <div class="container">
+                    <div class="single-grids">
+                        <div clas="single-top">
+                            <div class="single-left">
+                                <div class="flexslider">
+                                    <ul class="slides">
+
+                                        <div class="thumb-image"> <img src="@Model.Hinhminhhoa" data-imagezoom="true" class="img-responsive"> </div>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="single-right simpleCart_shelfItem">
+                                <h4 style="font-size:26px;font-weight:bolder">@Model.TenDC</h4>
+                                <div class="block">
+                                    <div class="starbox small ghosting"> </div>
+                                </div>
+                                <p class="price item_price">@String.Format("{0:0,0}", Model.Dongia) VNĐ</p>
+                                <div class="description">
+                                    <p><span>Tổng quan : </span>@Truncate(Model.Mota, 150)</p>
+                                </div>
+                                <div class="color-quality">
+                                    <h6>Quality :</h6>
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <div class="entry value-minus1">&nbsp;</div>
+                                            <div class="entry value1"><span>1</span></div>
+                                            <div class="entry value-plus1 active">&nbsp;</div>
+                                        </div>
+                                    </div>
+                                    <!--quantity-->
+                                    <script>
+                                        $('.value-plus1').on('click', function () {
+                                            var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) + 1;
+                                            divUpd.text(newVal);
+                                        });
+
+                                        $('.value-minus1').on('click', function () {
+                                            var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10) - 1;
+                                            if (newVal >= 1) divUpd.text(newVal);
+                                        });
+                                    </script>
+                                    <!--quantity-->
+                                </div>
+                                <div class="women">
+                                    <span class="size">XL / XXL / S </span>
+                                    <div id="Datmua">
+                                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @mMadochoi = @Model.MaDC, @strURL = Request.Url.ToString() })" data-text="Add To Cart" class="my-cart-b item_add">Đặt hàng</a>
+                                    </div>
+                                </div>
+                                <div class="social-icon">
+                                    <a href="#"><i class="icon"></i></a>
+                                    <a href="#"><i class="icon1"></i></a>
+                                    <a href="#"><i class="icon2"></i></a>
+                                    <a href="#"><i class="icon3"></i></a>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+
+                        <div class="clearfix"> </div>
+                    </div>
+                    <!--Product Description-->
+                    <div class="product-w3agile">
+                        <h3 class="tittle1" style="font-size:26px">Mô tả Sản phẩm</h3>
+                        <div class="product-grids">
+                            <div class="tab-wl3">
+                                <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                                    <ul id="myTab" class="nav nav-tabs left-tab" role="tablist">
+                                        <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Giới thiệu</a></li>
+                                        <li role="presentation"><a href="#reviews" role="tab" id="reviews-tab" data-toggle="tab" aria-controls="reviews">Đánh giá</a></li>
+
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                                            <div class="descr">
+                                                <h4>@Model.TenDC</h4>
+                                                <p style="color:#000000">@Model.Mota</p>
+                                                <p class="quote" style="color:#000000">Lưu ý : Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                                <div class="video">
+                                                    <iframe src="https://player.vimeo.com/video/22158502" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                                </div>
+                                                <ul>
+                                                    <li> Twin button front fastening</li>
+                                                    <li> Length:65cm</li>
+                                                    <li> Regular fit</li>
+                                                    <li> Notched lapels</li>
+                                                    <li> Internal pockets</li>
+                                                    <li> Centre-back vent </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="reviews" aria-labelledby="reviews-tab">
+                                            <div class="descr">
+                                                <div class="reviews-top">
+                                                    <div class="reviews-left">
+                                                        <img src="~/Data/files/imagesDetail/men3.jpg" alt=" " class="img-responsive">
+                                                    </div>
+                                                    <div class="reviews-right">
+                                                        <ul>
+                                                            <li><a href="#">Admin</a></li>
+                                                            <li><a href="#"><i class="glyphicon glyphicon-share" aria-hidden="true"></i>Trả lời</a></li>
+                                                        </ul>
+                                                        <p>Cảm ơn đã mua sản phẩm ở Website chúng tôi. Bạn hãy gửi dánh giá về sản phẩm. Xin cảm ơn.</p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="reviews-bottom">
+                                                    <h4>Thêm đánh giá</h4>
+                                                    <p>Địa chỉ email của bạn sẽ không được công khai. Các trường bắt buộc được đánh dấu *</p>
+                                                    <p>Xếp hạng</p>
+                                                    <div class="block">
+                                                        <div class="starbox small ghosting"><div class="positioner"><div class="stars"><div class="ghost" style="width: 42.5px; display: none;"></div><div class="colorbar" style="width: 42.5px;"></div><div class="star_holder"><div class="star star-0"></div><div class="star star-1"></div><div class="star star-2"></div><div class="star star-3"></div><div class="star star-4"></div></div></div></div></div>
+                                                    </div>
+                                                    <form action="#" method="post">
+                                                        <label>Ghi đánh giá </label>
+                                                        <textarea type="text" Name="Message" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Nội dung...</textarea>
+                                                        <div class="row">
+                                                            <div class="col-md-6 row-grid">
+                                                                <label>Tên</label>
+                                                                <input type="text" value="Name" Name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                                                            </div>
+                                                            <div class="col-md-6 row-grid">
+                                                                <label>Email</label>
+                                                                <input type="email" value="Email" Name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <input type="submit" value="Gửi">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="custom" aria-labelledby="custom-tab">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <link href="~/Content/ContentDetails/font-awesome.css" rel="stylesheet" />
+            <script src="~/Scripts/ScriptsDetails/jquery.min.js"></script>
+            <script src="~/Scripts/ScriptsDetails/main.js"></script>
+            <script src="~/Scripts/ScriptsDetBails/bootstrap-3.1.1.min.js"></script>
+            <script src="~/Scripts/ScriptsDetails/simpleCart.min.js"></script>
+            <script src="~/Scripts/ScriptsDetails/jquery.flexslider.js"></script>
+            <link href="~/Content/ContentDetails/flexslider.css" rel="stylesheet" />
+            <script src="~/Scripts/ScriptsDetails/imagezoom.js"></script>
+            <script>
+                // Can also be used with $(document).ready()
+                $(window).load(function () {
+                    $('.flexslider').flexslider({
+                        animation: "slide",
+                        controlNav: "thumbnails"
+                    });
+                });
+            </script>
+            <script src="~/Scripts/ScriptsDetails/jstarbox.js"></script>
+            <link href="~/Content/ContentDetails/jstarbox.css" rel="stylesheet" />
+            <script type="text/javascript">
+                jQuery(function () {
+                    jQuery('.starbox').each(function () {
+                        var starbox = jQuery(this);
+                        starbox.starbox({
+                            average: starbox.attr('data-start-value'),
+                            changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+                            ghosting: starbox.hasClass('ghosting'),
+                            autoUpdateAverage: starbox.hasClass('autoupdate'),
+                            buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+                            stars: starbox.attr('data-star-count') || 5
+                        }).bind('starbox-value-changed', function (event, value) {
+                            if (starbox.hasClass('random')) {
+                                var val = Math.random();
+                                starbox.next().text(' ' + val);
+                                return val;
+                            }
+                        })
+                    });
+                });
+            </script>
+            <link href="~/Content/ContentDetails/owl.carousel.css" rel="stylesheet" />
+            <script src="~/Scripts/ScriptsDetails/owl.carousel.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#owl-demo").owlCarousel({
+                        items: 1,
+                        lazyLoad: true,
+                        autoPlay: true,
+                        navigation: false,
+                        navigationText: false,
+                        pagination: true,
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>

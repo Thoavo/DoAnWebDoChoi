@@ -1,0 +1,42 @@
+﻿@using WebApplication11.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList < WebApplication11.Models.Admin>
+
+@{
+    ViewBag.Title = "QLAccAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-md-10 panel-info">
+    <div class="content-box-header panel-heading">
+        <div class="panel-title ">Quản lý admin</div>
+    </div>
+    <div class="content-box-large box-with-header">
+        <table class="table-bordered table-condensed">
+            <tr>
+                <th style="width:200px">
+                    Tên tài khoản
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAdmin)
+                    </td>
+                </tr>
+            }
+        </table>
+        @*Trang @(Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount;*@
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("QLThuonghieu", new { page = page }))
+        </div>
+        <style>
+            .MenuTrang li {
+                display: inline;
+            }
+        </style>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@using WebApplication11.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebApplication11.Models.THUONGHIEU>
+
+@{
+    ViewBag.Title = "QLThuonghieu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-md-10 panel-info">
+    <div class="content-box-header panel-heading">
+        <div class="panel-title ">Quản lý đồ chơi</div>
+        <div class="panel-options">
+            <a href="@Url.Action("Themmoithuonghieu", "Admin")" data-rel="reload"><i class="glyphicon glyphicon-cog"></i>Thêm mới</a>
+        </div>
+    </div>
+    <div class="content-box-large box-with-header">
+        <table class="table-bordered table-condensed">
+            <tr>
+                <th style="width:200px">
+                    Tên chủ đề
+                </th>
+                <th style="width:200px">
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tenthuonghieu)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Suathuonghieu", new { id = item.MaTH }) |
+                        @Html.ActionLink("Xóa", "Xoathuonghieu", new { id = item.MaTH })
+                    </td>
+                </tr>
+            }
+        </table>
+        @*Trang @(Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount;*@
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("QLThuonghieu", new { page = page }))
+        </div>
+        <style>
+            .MenuTrang li {
+                display: inline;
+            }
+        </style>
+    </div>
+</div>
+

@@ -1,0 +1,121 @@
+﻿@using WebApplication11.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebApplication11.Models.DOCHOI>
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+            @input
+    }
+    else
+    {
+            @input.Substring(0, length)<text>...</text>
+    }
+}   
+
+@{
+    ViewBag.Title = "Dochoi";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="col-md-10 panel-info">
+    <div class="content-box-header panel-heading">
+        <div class="panel-title ">Quản lý đồ chơi</div>
+        <div class="panel-options">
+            <a href="@Url.Action("Themmoidochoi", "Admin")" data-rel="reload"><i class="glyphicon glyphicon-cog"></i>Thêm mới</a>
+        </div>
+    </div>
+    <div class="content-box-large box-with-header">
+        <table class="table-bordered table-condensed">
+            <tr>
+                <th style="width:200px">
+                    Tên đồ chơi
+                </th>
+                <th style="width:200px">
+                    Đơn vị tính
+                </th>
+                <th style="width:200px">
+                    Đơn giá
+                </th>
+                <th style="width:200px">
+                    Mô tả
+                </th>
+                <th style="width:200px">
+                    Hình ảnh minh họa
+                </th>
+                <th style="width:200px">
+                    Tên thương hiệu
+                </th>
+                <th style="width:200px">
+                    Tên chủ đề
+                </th>
+                <th style="width:200px">
+                    Ngày cập nhật
+                </th>
+                <th style="width:200px">
+                    Số lượng bán
+                </th>
+                <th style="width:200px">
+                    Số lượt xem
+                </th>
+                <th style="width:200px">
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenDC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Donvitinh)
+                    </td>
+                    <td>
+                        @String.Format("{0:0,0}",Html.DisplayFor(modelItem => item.Dongia))
+                    </td>
+                    <td>
+                         @Truncate(item.Mota, 100)
+                    </td>
+                    <td>
+                        <img src="@Url.Content( item.Hinhminhhoa)" style="width:200px; height:250px"/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.THUONGHIEU.Tenthuonghieu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CHUDE.Tenchude)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soluongban)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.solanxem)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Suadochoi", new { id = item.MaDC }) |
+                        @Html.ActionLink("Chi tiết", "Chitietdochoi", new { id = item.MaDC }) |
+                        @Html.ActionLink("Xóa", "Xoadochoi", new { id = item.MaDC })
+                    </td>
+                </tr>
+                        }
+        </table>
+        @*Trang @(Model.PageCount <Model.PageNumber ? 0 : Model.PageNumber) /@Model.PageCount;*@
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("Dochoi", new { page =page}))
+        </div>
+        <style>
+            .MenuTrang li {
+                display: inline;
+            }
+        </style>
+    </div>
+    </div>
+
+    
+

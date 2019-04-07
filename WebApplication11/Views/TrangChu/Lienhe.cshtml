@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Lienhe";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/ContentMap/style.css" rel="stylesheet" />
+<link href="~/Content/ContentMap/font-awesome.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/main.js"></script>
+<script src="~/Scripts/bootstrap-3.1.1.min.js"></script>
+<script src="~/Scripts/simpleCart.min.js"></script>
+<div class="col-lg-9">
+    <div class="header" style="color:white;text-align:center;font-size:28px;padding-top:10px">
+        Mail Us
+    </div>
+    <div class="content">
+                    <div class="map-w3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.4519135842756!2d106.71890076875027!3d10.818671546432196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175289c82518457%3A0x4b7f5ccf7143b946!2zTmjDoCBuZ2jhu4kgLSBLaMOhY2ggc-G6oW4gQ8O0bmcgxJBvw6BuIFRoYW5oIMSQYQ!5e0!3m2!1svi!2s!4v1523936360854" allowfullscreen></iframe>
+                    </div>
+                    <div class="mail-bottom">
+                        <h4>Liên hệ với chúng tôi</h4>
+                        <form action="#" method="post">
+                            <input style="background:white" type="text" value="Tên" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                            <input style="background:white" type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                            <input style="background:white" type="text" value="Điện thoại" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone';}" required="">
+                            <textarea style="background:white" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Nội dung...</textarea>
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Clear">
+                        </form>
+                    </div>
+        </div>
+        <!--contact-->
+    </div>
+

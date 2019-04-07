@@ -1,0 +1,110 @@
+﻿@model WebApplication11.Models.DOCHOI
+
+@{
+    ViewBag.Title = "Xoadochoi";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="col-md-10 panel-info">
+    <div class="content-box-header panel-heading">
+        <div class="panel-title ">Xác nhận thông tin sản phẩm cần xóa</div>
+        
+    </div>
+    <div class="content-box-large box-with-header">
+        <dl class="dl-horizontal">
+            <dt>
+                Tên đồ chơi:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenDC)
+            </dd>
+            <hr>
+            <dt>
+                Đơn vị tính:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Donvitinh)
+            </dd>
+            <hr>
+            <dt>
+                Đơn giá:
+            </dt>
+
+            <dd>
+                @String.Format("{0:0,0}", Model.Dongia)
+            </dd>
+            <hr>
+            <dt>
+                Mô tả:
+            </dt>
+
+            <dd style="width:800px;text-align:justify">
+                @Html.DisplayFor(model => model.Mota)
+            </dd>
+            <hr>
+            <dt>
+                Hình minh họa:
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.Hinhminhhoa)" width="150px" />
+            </dd>
+            <hr>
+            <dt>
+                Thương hiệu:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.THUONGHIEU.Tenthuonghieu)
+            </dd>
+            <hr>
+            <dt>
+                Chủ đề:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CHUDE.Tenchude)
+            </dd>
+            <hr>
+            <dt>
+                Ngày cập nhật:
+            </dt>
+
+            <dd>
+                @String.Format("{0:dd/MM/yyyy}", Model.Ngaycapnhat)
+            </dd>
+            <hr>
+            <dt>
+                Số lượng bán:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Soluongban)
+            </dd>
+            <hr>
+            <dt>
+                Số lượt xem:
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.solanxem)
+            </dd>
+
+        </dl>
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xóa" class="btn btn-primary" /> |
+                    @Html.ActionLink("Quay lại", "Dochoi")
+                </div>
+            }
+        </div>     
+    </div>
+
+</div>
