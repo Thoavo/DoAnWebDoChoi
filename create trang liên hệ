@@ -1,0 +1,8 @@
+  <form action="#" method="post">
+                            <input style="background:white" type="text" value="Tên" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                            <input style="background:white" type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                            <input style="background:white" type="text" value="Điện thoại" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone';}" required="">
+                            <textarea style="background:white" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Nội dung...</textarea>
+                            <input type="submit" value="Submit">
+                            <input type="reset" value="Clear">
+        </form>
